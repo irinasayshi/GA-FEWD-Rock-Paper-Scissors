@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock, Paper, Scissors</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<header class="title">
+		<h1>Rock, Paper, or Scissors?</h1>
+	</header>
+		<div class="description">
+	</div>
+	<div class="title" id="scoreboard-id">
+		<h2>SCOREBOARD</h2>
+	</div>
+	<div class="scoreboard-tally">
+		<div id="player-section">
+			<div class="player-name" id="player">
+				<form class="name" action="">
+					<input type="text" name="name" placeholder="PLAYER NAME" id="player-name">
+					<input type="submit" name="submit" id="submit">
+					<div id="player-name-input"></div>
+				</form>
+				<div class="score" id="player-score">0</div>
+			</div>
+		</div>
+		<div id="bot-section">
+			<div class="player-name" id="bot">
+				<div>COMPUTER</div>
+				<div class="score" id="bot-score">0</div>
+			</div>
+		</div>
+	</div>
+	<div id="status"></div>
+	<div id="game-selection">
+		<img class="center" id="rock" src="images/rock.png" height="243" width="243">
+		<img class="center" id="paper" src="images/paper.png" height="243" width="243">
+		<img class="center" id="scissors" src="images/scissors.png" height="243" width="243">
+	</div>
+	<div id="rules">
+		<div id="rules-background">
+			<h2>RULES</h2>
+			<p>Play <span class="style-p">rock, paper, scissors</span> with a friend or your worst enemy to break a tie, make a decision, or kill time rather than each other.</p>
+			<h2>Why?</h2>
+			<p>Disputes are time consuming and often biased. <span class="style-p">Rock, Paper, Scissors</span> is the fairest way to solve any disputes by leaving it up to chance, fate, destiny, luck, and you're ability to stare your opponent straight in the eyes and read his mind.</p>
+			<h2>How to play</h2>
+			<ul id="rules-list">
+				<li>Rock beats Scissors</li>
+				<li>Paper beats Rock</li>
+				<li>Scissors beats Paper</li>
+				<li>If you and your opponent choose the same option, it's a tie, and no one will get hurt</li>
+			</ul>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
+
