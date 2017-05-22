@@ -2,15 +2,16 @@ $(document).ready(function(){
 
 // User inputs name
 
-$('#submit').click(inputName);
+$("#submit").click(inputName);
 
 function inputName(){
 	event.preventDefault();
-	var playerName = $('#player-name').val();
+	var playerName = $("#player-name").val();
 	$("#submit").toggle();
 	$("input").hide();
-	$('#player-name-input').append(playerName);
-	$("#player-name-input").css('text-align','center');
+	$("#player-name-input").text(playerName);
+	$("#player-name-input").css("text-align","center");
+	return playerName;
 }
 
 // Start the scores at 0
@@ -18,33 +19,24 @@ function inputName(){
 var playerTotal = 0;
 var botTotal = 0;
 
-// Store potential bot choices
+// Bot chooses at random and store bot choice
 
 function computerChoiceGen(){
-var botPick = ['rock','paper','scissors']
+var botPick = ["rock","paper","scissors"]
 return botPick[Math.floor(Math.random() * 3)];
 }
 
 // Store player choice in function
 
-$("#rock").click(playRock);
-$("#paper").click(playPaper);
-$("#scissors").click(playScissors);
-
-// Player a choice
-// Store bot choice
-
-function playRock(){
-	play('rock');
-}
-
-function playPaper(){
-	play('paper');
-}
-
-function playScissors(){
-	play('scissors');
-}
+$("#rock").click(function (){
+		play("rock");
+	});
+$("#paper").click(function (){
+		play("paper");
+	});
+$("#scissors").click(function (){
+		play("scissors");
+	});
 
 // check if the player choice beats, loses, or ties to bot
 
@@ -54,20 +46,47 @@ function play(humanChoice){
 
 	var botChoice = computerChoiceGen();
 
-	$('#status').html('You picked ' + humanChoice + '. Computer picked ' + botChoice + '.');
+	$("#status").html("You picked " + humanChoice + ". Computer picked " + botChoice + ". ");
 
-playerTotal = playerTotal++;
-
-$('#player-score').text(playerTotal);
-
-// if the player loses to bot, add to bot sccore
-
-botTotal = botTotal++;
-
-$('#bot-score').text(botTotal);
-
-// if the play and bot pick the same, no change
-
-}
+	if (humanChoice === botChoice) {
+    $("#status").append("It is a draw!");
+  	}
+  	// player picks rock, computer picks paper
+  	else if (humanChoice === "rock" && botChoice === "paper") {
+    $("#status").append("You lose!");
+    botTotal = botTotal + 1;
+    $('#bot-score').text(botTotal);
+  	}
+  	// player picks rocks, computer picks scissors
+  	else if (humanChoice === "rock" && botChoice === "scissors") {
+    $("#status").append("You win!");
+	playerTotal = playerTotal + 1;
+	$('#player-score').text(playerTotal);
+  	} 
+  	// player picks paper, computer picks rock
+  	else if (humanChoice === "paper" && botChoice === "rock") {
+    $("#status").append("You win!");
+	playerTotal = playerTotal + 1;
+	$('#player-score').text(playerTotal);
+  	}
+  	// player picks paper, computer picks scissors
+  	else if (humanChoice === "paper" && botChoice === "scissors") {
+    $("#status").append("You lose!");
+    botTotal = botTotal + 1;
+    $('#bot-score').text(botTotal);
+  	}
+  	// player picks scissors, computer picks rock
+  	else if (humanChoice === "scissors" && botChoice === "rock") {
+    $("#status").append("You lose!");
+	botTotal = botTotal + 1;
+	$('#bot-score').text(botTotal);
+  	}
+  	// player picks scissors, computer picks paper
+  	else if (humanChoice === "scissors" && botChoice === "paper") {
+    $("#status").append("You win!");
+	playerTotal = playerTotal + 1;
+	$('#player-score').text(playerTotal);
+  	}
+ }
 
 });
